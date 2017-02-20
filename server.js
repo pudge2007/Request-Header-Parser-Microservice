@@ -23,4 +23,7 @@ app.get('/', function(req, res) {
     res.end(JSON.stringify(result));
 });
 
-var server = http.createServer(app).listen(8080);
+var server = http.createServer(app).listen(process.env.PORT || 8080, function () {
+  var port = server.address().port;
+  console.log("App now running on port", port);
+});
